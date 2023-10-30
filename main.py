@@ -7,25 +7,25 @@ min=0
 max=4
 chans=0;nouvo_sko=0
 
-def test_maj(chaine):
+def maj_verifikasyon(chaine):
     for i in chaine:
         if i.isupper():
             return True
     return False
 
-def test_space(chaine):
-    if " " in chaine:
+def espas_verifikasyon(chain):
+    if " " in chain:
         return True
     return False
 
 nonb_machin=random.randint(min,max)
 
-Non_user=input("antre yon non itilizatè : ")
+Non_user=input("Bienvini nan jwèt Lawoulèt la;SVP antre yon epsedo : ")
 
-while test_maj(Non_user) or test_space(Non_user):
-    Non_user=input("antre yon non itilizatè sans espas ni lèt minskil : ")
+while maj_verifikasyon(Non_user) or espas_verifikasyon(Non_user):
+    Non_user=input("antre yon epsedo ki san espas ni lèt minskil : ")
     
-# ITILIZASYON paykèl
+# ITILIZASYON pickle
 
 non_fichye="database"
 try:
@@ -51,7 +51,7 @@ while True:
     score=0
     while chans >0:   
         try:
-            chwa_user=int(input(f"{Non_user} antre yon nomb ant {min} et {max} :"))
+            chwa_user=int(input(f"{Non_user} antre yon nomb ant {min} ak {max} :"))
             if chwa_user >=min and chwa_user<=max:
                 if chwa_user==nonb_machin:
                     a=chans-1
@@ -60,7 +60,7 @@ while True:
                     else:
                         score+=30*(a)
                     nouvo_sko+=score
-                    print(f"bravo {Non_user} !!! ou genyen ou gn yon sko {score} pwen nouvo sko {nouvo_sko} pwen")
+                    print(f"Bravo {Non_user} !!! ou genyen pati a\n Ou gen  {score} pwen. Nouvo sko w se {nouvo_sko} pwen")
                     data[Non_user] += score
                     with open(non_fichye, "wb") as fichier:
                         pickle.dump(data, fichier)
@@ -75,7 +75,7 @@ while True:
             
         except:
             print(f" {Non_user} sa ou antre a pa yon chif ")
-    print(f"nomb cacher a se te {nonb_machin}")
-    sortir=input("k pou'w soti nepot lot touch pou'w kontinye " )
+    print(f"Nonb kache a se  {nonb_machin}")
+    sortir=input("Peze k pou w kite jwèt la epi nenpot lot touch pou w kontinye jwet la " )
     if sortir.lower() =='k':
         break
